@@ -108,4 +108,76 @@ angular.module('conFusionApp',[])
             };
 
             
-    }]);
+    }])
+  .controller('dishDetailController' , ['$scope',function($scope){
+                $scope.dish={
+                           author:'Navrattan Biryani',
+                           image: 'images/navaratan-biryani.png',
+                           category: 'mains',
+                           label:'Hot',
+                           price:'13',
+                           description:'Aged steamed White Basmati rice/ Organic mixed Vegetables/ Saffron/ cashews/ raisins/nuts',
+                           comment: ''
+                        };
+                $scope.comments=[
+                          {
+                            author:'Srividya Majeti',
+                            rating: 5,
+                            comment: 'Ultimate, Reaching for the stars.',
+                            date:'2017-02-12'
+                          },
+                               {
+                            author:'vamshi kolanu',
+                            rating: 4,
+                            comment: 'Sends anyone to heaven.',
+                            date:'2014-02-12'
+                          },
+                           {
+                            author:'dinesh paladhi',
+                            rating: 3,
+                            comment: 'Too hot than expected.',
+                            date:'2014-01-12'
+                          },
+                          {
+                            author:'dinesh paladhi',
+                            rating: 1,
+                            comment: 'Too bland',
+                            date:'2014-01-12'
+                          },
+                          {
+                            author:'divya majeti',
+                            rating: 5,
+                            comment: 'Very tasty',
+                            date: '2012-03-04'
+                          }
+                ];
+  }])
+  .controller('ContactController', ['$scope', function($scope) {
+
+        $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+        var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+        $scope.channels = channels;
+        $scope.invalidChannelSelection = false;
+  }])
+
+  .controller('FeedbackController', ['$scope', function($scope) {
+      $scope.sendFeedback=function(){
+        console.log($scope.feedback);
+                if($scope.feedback.agree && ($scope.feedback.mychannel=="")){
+                            $scope.invalidChannelSelection = true;
+                    console.log('incorrect');
+                }
+                else {
+                    $scope.invalidChannelSelection = false;
+                    $scope.feedback = {mychannel:"", firstName:"", lastName:"",
+                                       agree:false, email:"" };
+                    $scope.feedback.mychannel="";
+
+                    $scope.feedbackForm.$setPristine();
+                    console.log($scope.feedback);
+                }
+            };
+  }])
+
+
+;

@@ -24,79 +24,29 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<script type="text/javascript">
-    var app = angular.module('conFusionApp',[]);
-
-    app.controller('dishDetailController' , function(){
-                dish={
-                           author:'Navrattan Biryani',
-                           image: 'images/navaratan-biryani.png',
-                           category: 'mains',
-                           label:'Hot',
-                           price:'13',
-                           description:'Aged steamed White Basmati rice/ Organic mixed Vegetables/ Saffron/ cashews/ raisins/nuts',
-                           comment: ''
-                        };
-                comments=[
-                          {
-                            author:'Srividya Majeti',
-                            rating: 5,
-                            comment: 'Ultimate, Reaching for the stars.',
-                            date:'2017-02-12'
-                          },
-                               {
-                            author:'vamshi kolanu',
-                            rating: 4,
-                            comment: 'Sends anyone to heaven.',
-                            date:'2014-02-12'
-                          },
-                           {
-                            author:'dinesh paladhi',
-                            rating: 3,
-                            comment: 'Too hot than expected.',
-                            date:'2014-01-12'
-                          },
-                          {
-                            author:'dinesh paladhi',
-                            rating: 1,
-                            comment: 'Too bland',
-                            date:'2014-01-12'
-                          },
-                          {
-                            author:'divya majeti',
-                            rating: 5,
-                            comment: 'Very tasty',
-                            date: '2012-03-04'
-                          }
-                ];
-            this.dish= dish;
-            this.comments = comments;
-
-    });
-</script>
 <body>
 
     <div class="container">
-        <div class="row row-content" ng-controller= 'dishDetailController as dishDetailCntrl'>
+        <div class="row row-content" ng-controller= 'dishDetailController'>
             <div class="col-xs-12">
               <div class="media-left media-middle">
                   <a href="#">
                   <img class="media-object img-thumbnail"
-                   ng-src={{dishDetailCntrl.dish.image}} alt="Uthappizza" width='110px' height="110px">
+                   ng-src={{dish.image}} alt="Uthappizza" width='110px' height="110px">
                   </a>
               </div>
               <div class="media-body">
-                  <h2 class="media-heading">{{dishDetailCntrl.dish.author}}
-                   <span class="label label-danger">{{dishDetailCntrl.dish.label}}</span>
-                   <span class="badge">{{dishDetailCntrl.dish.price | currency}}</span></h2>
-                  <p>{{dishDetailCntrl.dish.description}}</p>
+                  <h2 class="media-heading">{{dish.author}}
+                   <span class="label label-danger">{{dish.label}}</span>
+                   <span class="badge">{{dish.price | currency}}</span></h2>
+                  <p>{{dish.description}}</p>
               </div>
             </div>
             <div  class="col-xs-offset-1 col-xs-12">
               <strong><p> Customer Comments </p></strong>
               <p> Sort by: <input type="text" ng-model="sort" ng-value="sort"></p>
             </div>
-            <div class="col-xs-offset-1 col-xs-12" ng-repeat='comment in dishDetailCntrl.comments | orderBy:sort'>
+            <div class="col-xs-offset-1 col-xs-12" ng-repeat='comment in comments | orderBy:sort'>
               <blockquote>
                 <p>{{comment.rating}} Stars</p>
                 <p>{{comment.comment}}</p>
@@ -105,7 +55,11 @@
             </div>
         </div>
     </div>
-
+  <!-- build:js scripts/main.js -->
+     
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+     <!-- endbuild -->
 </body>
-
+  
 </html>
