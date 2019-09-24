@@ -1,0 +1,24 @@
+{
+  "name": "confusion",
+  "homepage": "https://github.com/majetisiri/conFusion",
+  "authors": [
+    "srividya majeti"
+  ],
+  "description": "siri restaurant",
+  "main": "index.html",
+  "keywords": [
+    "restaurant",
+    "siri",
+    "food"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
